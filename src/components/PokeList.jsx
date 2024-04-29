@@ -12,7 +12,7 @@ export default function PokeList() {
   }, []);
 
   return (
-    <div>
+    <div className="poke-list">
       <ul className="list-group">
         {pokemons?.map((pokemon, index) => (
           <PokeItem key={index} pokemon={pokemon} />

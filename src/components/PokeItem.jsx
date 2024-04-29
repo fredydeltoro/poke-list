@@ -11,10 +11,14 @@ function PokeItem({ pokemon }) {
   return (
     <li
       key={pokemon.name}
-      className="list-group-item"
+      className="poke-item list-group-item"
       onClick={() => handleClick(pokemon.url)}
     >
       {pokemon.name}
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+        alt=""
+      />
     </li>
   );
 }

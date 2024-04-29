@@ -3,4 +3,19 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  padding: 15px;
+}
+
+.avatar {
+  padding: 15px;
+}
+
+.poke-list {
+  padding: 25px;
+}
+
+.poke-item {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
