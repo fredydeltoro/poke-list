@@ -1,17 +1,26 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPokemon } from "../redux/pokemonSlice";
 import PokeStats from "./PokeStats";
 
 function PokeDetail() {
   const pokemon = useSelector((state) => state.pokemon.currentPokemon);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
   const handleClick = () => {
     navigate("/");
   };
 
   const getSeparator = (array, index) =>
     array.length > 1 && index < array.length - 1 ? ", " : "";
+
+  useEffect(() => {
+    if (!pokemon.name || pokemon.name === id) {
+      dispatch(fetchPokemon(`https://pokeapi.co/api/v2/pokemon/${id}`));
+    }
+  }, []);
 
   return (
     <div className="poke-detail">
