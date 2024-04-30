@@ -55,12 +55,13 @@ const pokemonSlice = createSlice({
       .addCase(fetchPokemons.fulfilled, (state, action) => {
         state.loading = false;
         const pokemons = action.payload;
+        state.paginatedPokemons = [];
 
         for (let i = 0; i < pokemons.length; i += PAGE_SIZE) {
           state.paginatedPokemons.push(pokemons.slice(i, i + PAGE_SIZE));
         }
 
-        state.pokemons = state.paginatedPokemons[0];
+        state.pokemons = state.paginatedPokemons[state.currentPage];
       })
       .addCase(fetchPokemons.rejected, (state, action) => {
         (state.loading = false), (state.pokemons = action.payload);

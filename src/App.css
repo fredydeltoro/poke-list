@@ -16,7 +16,7 @@
 }
 
 .poke-list .list-group {
-  max-height: 90vh;
+  max-height: 80vh;
   height: 100%;
   overflow: auto;
 }

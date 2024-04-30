@@ -35,7 +35,7 @@ export default function PokeList() {
         <button
           className="btn btn-secondary"
           onClick={handlePreviousClick}
-          style={{ display: `${currentPage === 1 ? "none" : "block"}` }}
+          style={{ display: `${currentPage === 0 ? "none" : "block"}` }}
         >
           Previous
         </button>
