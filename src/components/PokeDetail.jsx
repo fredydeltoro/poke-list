@@ -17,7 +17,7 @@ function PokeDetail() {
     array.length > 1 && index < array.length - 1 ? ", " : "";
 
   useEffect(() => {
-    if (!pokemon.name || pokemon.name === id) {
+    if (!pokemon.name || pokemon.name !== id) {
       dispatch(fetchPokemon(`https://pokeapi.co/api/v2/pokemon/${id}`));
     }
   }, []);

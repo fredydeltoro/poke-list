@@ -6,14 +6,17 @@ import { useNavigate } from "react-router-dom";
 const PokeItem = ({ pokemon }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const currentPokemon = useSelector((state) => state.pokemon.currentPokemon);
+  const isActive = currentPokemon.name === pokemon.name;
   const activeItemRef = useRef(null);
   const handleClick = (url) => {
-    dispatch(fetchPokemon(url));
+    if (!isActive) {
+      dispatch(fetchPokemon(url));
+    }
   };
   const handleDoubleClick = () => {
     navigate(`/${pokemon.name}`);
   };
-  const currentPokemon = useSelector((state) => state.pokemon.currentPokemon);
 
   useEffect(() => {
     if (activeItemRef.current) {
@@ -27,10 +30,8 @@ const PokeItem = ({ pokemon }) => {
   return (
     <li
       key={pokemon.name}
-      ref={currentPokemon.name === pokemon.name ? activeItemRef : null}
-      className={`poke-item list-group-item ${
-        currentPokemon.name === pokemon.name && "active"
-      }`}
+      ref={isActive ? activeItemRef : null}
+      className={`poke-item list-group-item ${isActive && "active"}`}
       onClick={() => handleClick(pokemon.url)}
       onDoubleClick={handleDoubleClick}
     >
