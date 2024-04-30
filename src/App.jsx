@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import PokeList from "./components/PokeList";
 import PokeDetail from "./components/PokeDetail";
