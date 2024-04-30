@@ -10,8 +10,12 @@
   margin-top: 5%;
 }
 
-.poke-list .list-group {
+.poke-list,
+.poke-detail {
   padding: 35px 25px;
+}
+
+.poke-list .list-group {
   max-height: 90vh;
   height: 100%;
   overflow: auto;

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import PokeList from "./components/PokeList";
+import PokeDetail from "./components/PokeDetail";
 import PokeAvatar from "./components/PokeAvatar";
 import pokeLogo from "./assets/pokeapi_logo.png";
 import "./App.css";
@@ -15,6 +16,7 @@ function App() {
         <main className="col-8">
           <Routes>
             <Route path="/" element={<PokeList />} />
+            <Route path="/:id" element={<PokeDetail />} />
           </Routes>
         </main>
       </div>
