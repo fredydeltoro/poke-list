@@ -31,7 +31,7 @@ const pokemonSlice = createSlice({
     currentPokemon: {},
     loading: false,
     error: false,
-    currentPage: 1,
+    currentPage: 0,
     paginatedPokemons: [],
   },
   reducers: {
