@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   fetchPokemons,
   fetchPokemon,
@@ -10,6 +11,7 @@ import PokeItem from "./PokeItem";
 
 export default function PokeList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const pokemons = useSelector((state) => state.pokemon.pokemons);
   const currentPokemon = useSelector((state) => state.pokemon.currentPokemon);
   const currentPage = useSelector((state) => state.pokemon.currentPage);
@@ -30,6 +32,10 @@ export default function PokeList() {
   const isInCurrentPage = (name) =>
     pokemons.find((pokemon) => pokemon.name === name);
 
+  const handleDetails = (e) => {
+    e.preventDefault();
+    navigate(`/${currentPokemon.name}`);
+  };
   useEffect(() => {
     dispatch(fetchPokemons());
   }, []);
@@ -46,6 +52,10 @@ export default function PokeList() {
 
   return (
     <div className="poke-list">
+      <a className="details-button" href="#" onClick={handleDetails}>
+        Details
+      </a>
+
       <ul className="list-group">
         {pokemons?.map((pokemon, index) => (
           <PokeItem key={index} pokemon={pokemon} />

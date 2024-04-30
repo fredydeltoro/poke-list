@@ -28,9 +28,33 @@
 }
 
 .poke-list .paginator {
-  margin-top: 10px;
+  margin-top: 15px;
   text-align: center;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.details-button {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .poke-list .list-group {
+    max-height: 40vh;
+  }
+
+  .details-button {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .avatar {
+    margin-top: 0;
+  }
+
+  .paginator {
+    margin-top: 25px;
+  }
 }
