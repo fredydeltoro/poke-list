@@ -11,7 +11,7 @@ import PokeItem from "./PokeItem";
 export default function PokeList() {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemon.pokemons);
-  const pokemon = useSelector((state) => state.pokemon.currentPokemon);
+  const currentPokemon = useSelector((state) => state.pokemon.currentPokemon);
   const currentPage = useSelector((state) => state.pokemon.currentPage);
   const paginatedPokemons = useSelector(
     (state) => state.pokemon.paginatedPokemons
@@ -35,11 +35,14 @@ export default function PokeList() {
   }, []);
 
   useEffect(() => {
-    if (pokemons.length && (!pokemon.name || !isInCurrentPage(pokemon.name))) {
+    if (
+      pokemons.length &&
+      (!currentPokemon.name || !isInCurrentPage(currentPokemon.name))
+    ) {
       const randomIndex = Math.floor(Math.random() * pokemons.length);
       dispatch(fetchPokemon(pokemons[randomIndex].url));
     }
-  }, [pokemons, pokemon]);
+  }, [pokemons, currentPokemon]);
 
   return (
     <div className="poke-list">

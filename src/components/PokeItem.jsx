@@ -1,22 +1,36 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemon } from "../redux/pokemonSlice";
 import { useNavigate } from "react-router-dom";
 
-function PokeItem({ pokemon }) {
+const PokeItem = ({ pokemon }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const activeItemRef = useRef(null);
   const handleClick = (url) => {
     dispatch(fetchPokemon(url));
   };
   const handleDoubleClick = () => {
     navigate(`/${pokemon.name}`);
   };
+  const currentPokemon = useSelector((state) => state.pokemon.currentPokemon);
+
+  useEffect(() => {
+    if (activeItemRef.current) {
+      activeItemRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [currentPokemon]);
 
   return (
     <li
       key={pokemon.name}
-      className="poke-item list-group-item"
+      ref={currentPokemon.name === pokemon.name ? activeItemRef : null}
+      className={`poke-item list-group-item ${
+        currentPokemon.name === pokemon.name && "active"
+      }`}
       onClick={() => handleClick(pokemon.url)}
       onDoubleClick={handleDoubleClick}
     >
@@ -27,6 +41,6 @@ function PokeItem({ pokemon }) {
       />
     </li>
   );
-}
+};
 
 export default PokeItem;
