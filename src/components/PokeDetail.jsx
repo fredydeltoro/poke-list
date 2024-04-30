@@ -48,13 +48,13 @@ function PokeDetail() {
         </div>
       </div>
       <div className="row">
-        <div className="col-6">
+        <div className="col-md-6">
           <div>
             <b>Stats</b>
             <PokeStats stats={pokemon.stats} />
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-md-6">
           <div className="text-center">
             <b>Abilities</b>
             <div className="d-flex flex-column">
