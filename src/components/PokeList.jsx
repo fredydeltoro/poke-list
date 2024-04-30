@@ -19,6 +19,9 @@ export default function PokeList() {
     dispatch(previousPage());
   };
 
+  const showPreviousButton = currentPage > 0;
+  const showNextButton = currentPage < paginatedPokemons.length - 1;
+
   useEffect(() => {
     dispatch(fetchPokemons());
   }, []);
@@ -32,24 +35,16 @@ export default function PokeList() {
       </ul>
 
       <div className="paginator">
-        <button
-          className="btn btn-secondary"
-          onClick={handlePreviousClick}
-          style={{ display: `${currentPage === 0 ? "none" : "block"}` }}
-        >
-          Previous
-        </button>
-        <button
-          onClick={handleNextClick}
-          style={{
-            display: `${
-              currentPage === paginatedPokemons.length - 1 ? "none" : "block"
-            }`,
-          }}
-          className="btn btn-secondary"
-        >
-          Next
-        </button>
+        {showPreviousButton && (
+          <button className="btn btn-secondary" onClick={handlePreviousClick}>
+            Previous
+          </button>
+        )}
+        {showNextButton && (
+          <button className="btn btn-secondary" onClick={handleNextClick}>
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
