@@ -27,13 +27,15 @@ export default function PokeList() {
 
   const showPreviousButton = currentPage > 0;
   const showNextButton = currentPage < paginatedPokemons.length - 1;
+  const isInCurrentPage = (name) =>
+    pokemons.find((pokemon) => pokemon.name === name);
 
   useEffect(() => {
     dispatch(fetchPokemons());
   }, []);
 
   useEffect(() => {
-    if (pokemons.length && !pokemon.name) {
+    if (pokemons.length && (!pokemon.name || !isInCurrentPage(pokemon.name))) {
       const randomIndex = Math.floor(Math.random() * pokemons.length);
       dispatch(fetchPokemon(pokemons[randomIndex].url));
     }
