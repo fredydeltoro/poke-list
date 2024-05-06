@@ -14,3 +14,7 @@ Currently, two official plugins are available:
 `yarn install`
 
 `yarn dev`
+
+## Tests
+
+`yarn test`
