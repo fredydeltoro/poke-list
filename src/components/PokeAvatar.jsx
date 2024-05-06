@@ -7,6 +7,7 @@ export default function PokeAvatar() {
   return (
     <div className="avatar">
       <img
+        data-testid="poke-avatar"
         style={{ width: "100%" }}
         src={pokemon?.sprites?.other.home.front_default}
         alt=""

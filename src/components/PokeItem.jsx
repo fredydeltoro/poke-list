@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemon } from "../redux/pokemonSlice";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const PokeItem = ({ pokemon }) => {
   };
 
   useEffect(() => {
-    if (activeItemRef.current) {
+    if (activeItemRef.current && activeItemRef.current.scrollIntoView) {
       activeItemRef.current.scrollIntoView({
         behavior: "smooth",
         block: "nearest",

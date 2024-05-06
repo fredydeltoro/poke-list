@@ -51,7 +51,7 @@ export default function PokeList() {
   }, [pokemons, currentPokemon]);
 
   return (
-    <div className="poke-list">
+    <div className="poke-list" data-testid="poke-list">
       <a className="details-button" href="#" onClick={handleDetails}>
         Details
       </a>
